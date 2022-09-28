@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link href="D:\bootstrap-5.0.2-dist\expenses.css" rel="stylesheet" type="css/text">
+</head>
+<style>
+    #box{
+     width: 900px;
+    height: 500px;
+    border-style: solid;
+    border-color: black;   
+    margin-left: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+    .name{
+        margin-left: 50px;
+    }
+    .date{
+        margin-left: 60px;
+        margin-top: 30px;
+    }
+    .amount{
+        margin-left:30px;
+        margin-top: 30px;
+    }
+    .inputwidth{
+     width: 600px;
+     margin-top: 10px;
+    }
+    .inputwidth1{
+     margin-top: 10px;
+     width: 300px;
+    }
+    h1{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 350px;
+}
+   h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: green;
+    margin-left: 370px;
+}
+    #btn{
+        margin-left: 350px;
+        background-color: green;
+        margin-top: 20px;
+        border-color: green;
+        border-radius: 0.2em;
+        box-shadow: none;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+    }
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+</style>
+<body>
+    <div id="box">
+    <h1>Expense Tracker</h1>
+    <h2>Add A New Item:</h2>
+    <form id="input">
+    <label class="name"><b>Name:</b></label>
+        <input class="inputwidth"id="name"type= "text" placeholder="Where was the expense made?" id="name">
+   <br> <label class="date">Date:</b></label>
+        <input class="inputwidth1"id="date"type= "date" placeholder="mm/dd/yyyy" id="date">
+    <label class="amount"><b>Amount:</b></label>
+    <input type= "text" value="NGN" id="amount">
+    </form>
+        <br> <button id="btn">Add Expense</button>
+        <!--<button id="myBtn" >Remove</button>-->
+        <br> <br> <br> <br> <br>
+       <table id="table">  
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+
+        <tr>
+            <!--<td>Danladi</td>
+            <td>06/06/98</td>
+            <td>10,0000</td>-->
+        </tr>
+        
+    </table>
+    </div>
+        <script>
+            let btn = document.getElementById("btn")
+            btn.addEventListener("click",add)
+            
+            function add(){
+                var name= document.querySelector("#name").value;
+                let date= document.querySelector("#date").value
+                let amount= document.querySelector("#amount").value
+                if(name.trim() ==="" || date === "" || amount.trim() ===  "")
+                    {
+                        console.log(input)
+                        alert("Fill required information");
+                    }
+                    else{
+                        let table = document.getElementById("table");
+                        let row = document.createElement("tr");
+
+                        let td_name = document.createElement("td")
+                        td_name.textContent = name;
+                        row.appendChild(td_name);
+                        
+                        
+                        let td_date = document.createElement("td")
+                        td_date.textContent = date
+                        row.appendChild(td_date)
+
+                      
+                        td_amount = document.createElement("td")
+                       td_amount.classList.add("removableTd")
+                        td_amount.textContent = amount
+                        row.appendChild(td_amount)
+                        
+                        
+                                                                 
+                    
+                        let del = document.createElement("button") 
+                        del.textContent= "X"
+                        del.style.backgroundColor= "red"    
+                        del.addEventListener("click", remove)
+                        function remove(){
+                            row.remove()    
+                        }          
+                        row.appendChild(del);
+
+                          
+                        table.appendChild(row);        
+                    } 
+                      }
+
+
+                     
+                //console.log(alert)
+        </script>
+    </body>
+</html>
